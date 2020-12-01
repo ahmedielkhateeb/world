@@ -1,5 +1,7 @@
 package com.example.world.models;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
@@ -9,9 +11,11 @@ public class CountryLanguageId implements Serializable {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "country_code")
+    @NotNull
     private Country countryCode;
 
     @Column(name = "language")
+    @NotNull
     private String language;
 
     public CountryLanguageId() {

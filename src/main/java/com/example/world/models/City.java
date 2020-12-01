@@ -1,5 +1,7 @@
 package com.example.world.models;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
 
 @Entity
@@ -8,20 +10,25 @@ public class City {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @NotNull
     @Column(name = "id")
     private int id;
 
     @Column(name = "name")
+    @NotNull
     private String name;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "country_code")
+    @NotNull
     private Country countryCode;
 
     @Column(name = "district")
+    @NotNull
     private String district;
 
     @Column(name = "population")
+    @NotNull
     private int population;
 
     public City() {

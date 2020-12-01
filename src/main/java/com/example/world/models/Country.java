@@ -1,5 +1,7 @@
 package com.example.world.models;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
 
 @Entity
@@ -9,18 +11,23 @@ public class Country {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "code")
+    @NotNull
     private String code;
 
     @Column(name = "name")
+    @NotNull
     private String name;
 
     @Column(name = "continent")
+    @NotNull
     private String continent;
 
     @Column(name = "region")
+    @NotNull
     private String region;
 
     @Column(name = "surface_area")
+    @NotNull
     private double surfaceArea;
 
     @Column(name = "indep_year")
@@ -39,9 +46,11 @@ public class Country {
     private double gnpOld;
 
     @Column(name = "local_name")
+    @NotNull
     private String localName;
 
     @Column(name = "government_form")
+    @NotNull
     private String governmentForm;
 
     @Column(name = "head_of_state")
@@ -52,6 +61,7 @@ public class Country {
     private City capital;
 
     @Column(name = "code2")
+    @NotNull
     private String code2;
 
     public Country() {
