@@ -1,0 +1,26 @@
+version: '2'
+
+services:
+  app:
+    image: 'world_app'
+    build:
+      context: .
+      dockerfile: Dockerfile - App
+    container_name: app
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/world-db
+      - SPRING_DATASOURCE_USERNAME=world
+      - SPRING_DATASOURCE_PASSWORD=world123
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    ports:
+    - 8088:8080
+
+  db:
+    container_name: db
+    build:
+      context: .
+      dockerfile: Dockerfile - DB
+    ports:
+      - 5433:5432

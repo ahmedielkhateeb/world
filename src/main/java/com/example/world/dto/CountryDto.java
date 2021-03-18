@@ -3,14 +3,14 @@ package com.example.world.dto;
 public class CountryDto {
     private String name;
     private String continent;
-    private int population;
-    private double lifeExpectancy;
+    private Integer population;
+    private Float lifeExpectancy;
     private String language;
 
     public CountryDto() {
     }
 
-    public CountryDto(String name, String continent, int population, double lifeExpectancy, String language) {
+    public CountryDto(String name, String continent, Integer population, Float lifeExpectancy, String language) {
         this.name = name;
         this.continent = continent;
         this.population = population;
@@ -34,19 +34,19 @@ public class CountryDto {
         this.continent = continent;
     }
 
-    public int getPopulation() {
+    public Integer getPopulation() {
         return population;
     }
 
-    public void setPopulation(int population) {
+    public void setPopulation(Integer population) {
         this.population = population;
     }
 
-    public double getLifeExpectancy() {
+    public Float getLifeExpectancy() {
         return lifeExpectancy;
     }
 
-    public void setLifeExpectancy(double lifeExpectancy) {
+    public void setLifeExpectancy(Float lifeExpectancy) {
         this.lifeExpectancy = lifeExpectancy;
     }
 

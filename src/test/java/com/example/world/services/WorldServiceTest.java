@@ -17,7 +17,8 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import static org.junit.Assert.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @RunWith(SpringRunner.class)
 public class WorldServiceTest {
@@ -30,6 +31,7 @@ public class WorldServiceTest {
     private Country country;
     private CountryLanguage countryLanguage;
     private City city;
+    private List<CountryLanguage> countryLanguagesList = new ArrayList<>();
 
     @Before
     public void init() {
@@ -43,10 +45,10 @@ public class WorldServiceTest {
         country.setName("Bahrain");
         country.setContinent("Asia");
         country.setRegion("Middle East");
-        country.setSurfaceArea(694);
+        country.setSurfaceArea(694F);
         country.setIndepYear(1971);
         country.setPopulation(617000);
-        country.setLifeExpectancy(73);
+        country.setLifeExpectancy(73F);
         country.setGnp(6366.00);
         country.setGnpOld(6097.00);
         country.setLocalName("Al-Bahrayn");
@@ -58,7 +60,8 @@ public class WorldServiceTest {
         countryLanguage = new CountryLanguage();
         countryLanguage.setCountryLanguageId(new CountryLanguageId(country, "Arabic"));
         countryLanguage.setOfficial(true);
-        countryLanguage.setPercentage(67.699997);
+        countryLanguage.setPercentage((float) 67.699997);
+        countryLanguagesList.add(countryLanguage);
     }
 
     @Test(expected = NotFoundException.class)
@@ -69,12 +72,12 @@ public class WorldServiceTest {
     }
 
 
-    @Test(expected = NotFoundException.class)
+    @Test(expected = Exception.class)
     public void getCountryByCodeTest2() throws Exception {
         Mockito.when(countryRepository.findByCode("BHR")).
                 thenReturn(country);
         Mockito.when(countryLanguageRepository
-                .findByCountryLanguageId_CountryCodeAndIsOfficialIsTrue(country)).thenReturn(null);
+                .findByCountryLanguageId_CountryCode(country)).thenReturn(null);
         CountryDto countryDto = worldService.getCountryByCode("BHR");
 
     }
@@ -84,7 +87,7 @@ public class WorldServiceTest {
         Mockito.when(countryRepository.findByCode("BHR")).
                 thenReturn(country);
         Mockito.when(countryLanguageRepository
-                .findByCountryLanguageId_CountryCodeAndIsOfficialIsTrue(country)).thenReturn(countryLanguage);
+                .findByCountryLanguageId_CountryCode(country)).thenReturn(countryLanguagesList);
         CountryDto countryDto = worldService.getCountryByCode("BHR");
         Assert.assertEquals(countryDto.getName(), country.getName());
         Assert.assertEquals(countryDto.getContinent(), country.getContinent());
@@ -97,7 +100,7 @@ public class WorldServiceTest {
     public void getCountryByCodeTest4() throws Exception {
         Mockito.when(countryRepository.findByCode("BHR")).
                 thenThrow(new Exception());
-        Mockito.when(countryLanguageRepository.findByCountryLanguageId_CountryCodeAndIsOfficialIsTrue(country)).thenReturn(countryLanguage);
+        Mockito.when(countryLanguageRepository.findByCountryLanguageId_CountryCode(country)).thenReturn(countryLanguagesList);
         CountryDto countryDto = worldService.getCountryByCode("BHR");
     }
 
@@ -105,7 +108,7 @@ public class WorldServiceTest {
     public void getCountryByCodeTest5() throws Exception {
         Mockito.when(countryRepository.findByCode("BHR")).
                 thenReturn(country);
-        Mockito.when(countryLanguageRepository.findByCountryLanguageId_CountryCodeAndIsOfficialIsTrue(country)).thenThrow(new Exception());
+        Mockito.when(countryLanguageRepository.findByCountryLanguageId_CountryCode(country)).thenThrow(new Exception());
         CountryDto countryDto = worldService.getCountryByCode("BHR");
     }
 }

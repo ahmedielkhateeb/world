@@ -21,7 +21,7 @@ public class WorldController {
         this.worldService = worldService;
     }
 
-    @GetMapping("{countryCode}")
+    @GetMapping(value = {"country/{countryCode}","country/{countryCode}/"})
     public ResponseEntity<?> getCountryByCode(@PathVariable String countryCode) throws Exception {
         WorldLogger.log.info("Enter getCountryByCode method of WorldController class");
         CountryDto countryDto = worldService.getCountryByCode(countryCode.toUpperCase());
@@ -30,7 +30,7 @@ public class WorldController {
 
     }
 
-    @GetMapping("get-all-countries")
+    @GetMapping( value = {"all/get-all-countries","all/get-all-countries/"})
     public ResponseEntity<?> getAllCountry() throws Exception {
         WorldLogger.log.info("Enter getAllCountry method of WorldController class");
         List<CountryDto> countryDtoList = worldService.getAllCountry();

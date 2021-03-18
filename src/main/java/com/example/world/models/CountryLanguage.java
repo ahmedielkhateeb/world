@@ -18,12 +18,12 @@ public class CountryLanguage {
 
     @Column(name = "percentage")
     @NotNull
-    private double percentage;
+    private Float percentage;
 
     public CountryLanguage() {
     }
 
-    public CountryLanguage(CountryLanguageId countryLanguageId, boolean isOfficial, double percentage) {
+    public CountryLanguage(CountryLanguageId countryLanguageId, boolean isOfficial, Float percentage) {
         this.countryLanguageId = countryLanguageId;
         this.isOfficial = isOfficial;
         this.percentage = percentage;
@@ -45,11 +45,11 @@ public class CountryLanguage {
         isOfficial = official;
     }
 
-    public double getPercentage() {
+    public Float getPercentage() {
         return percentage;
     }
 
-    public void setPercentage(double percentage) {
+    public void setPercentage(Float percentage) {
         this.percentage = percentage;
     }
 

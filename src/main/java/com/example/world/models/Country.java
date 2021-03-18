@@ -28,22 +28,22 @@ public class Country {
 
     @Column(name = "surface_area")
     @NotNull
-    private double surfaceArea;
+    private Float surfaceArea;
 
     @Column(name = "indep_year")
-    private int indepYear;
+    private Integer indepYear;
 
     @Column(name = "population")
-    private int population;
+    private Integer population;
 
     @Column(name = "life_expectancy")
-    private double lifeExpectancy;
+    private Float lifeExpectancy;
 
     @Column(name = "gnp")
-    private double gnp;
+    private Double gnp;
 
     @Column(name = "gnp_old")
-    private double gnpOld;
+    private Double gnpOld;
 
     @Column(name = "local_name")
     @NotNull
@@ -67,7 +67,7 @@ public class Country {
     public Country() {
     }
 
-    public Country(String name, String continent, String region, double surfaceArea, int indepYear, int population, double lifeExpectancy, double gnp, double gnpOld, String localName, String governmentForm, String headOfState, City capital, String code2) {
+    public Country(String name, String continent, String region, Float surfaceArea, Integer indepYear, Integer population, Float lifeExpectancy, Double gnp, Double gnpOld, String localName, String governmentForm, String headOfState, City capital, String code2) {
         this.name = name;
         this.continent = continent;
         this.region = region;
@@ -116,51 +116,51 @@ public class Country {
         this.region = region;
     }
 
-    public double getSurfaceArea() {
+    public Float getSurfaceArea() {
         return surfaceArea;
     }
 
-    public void setSurfaceArea(double surfaceArea) {
+    public void setSurfaceArea(Float surfaceArea) {
         this.surfaceArea = surfaceArea;
     }
 
-    public int getIndepYear() {
+    public Integer getIndepYear() {
         return indepYear;
     }
 
-    public void setIndepYear(int indepYear) {
+    public void setIndepYear(Integer indepYear) {
         this.indepYear = indepYear;
     }
 
-    public int getPopulation() {
+    public Integer getPopulation() {
         return population;
     }
 
-    public void setPopulation(int population) {
+    public void setPopulation(Integer population) {
         this.population = population;
     }
 
-    public double getLifeExpectancy() {
+    public Float getLifeExpectancy() {
         return lifeExpectancy;
     }
 
-    public void setLifeExpectancy(double lifeExpectancy) {
+    public void setLifeExpectancy(Float lifeExpectancy) {
         this.lifeExpectancy = lifeExpectancy;
     }
 
-    public double getGnp() {
+    public Double getGnp() {
         return gnp;
     }
 
-    public void setGnp(double gnp) {
+    public void setGnp(Double gnp) {
         this.gnp = gnp;
     }
 
-    public double getGnpOld() {
+    public Double getGnpOld() {
         return gnpOld;
     }
 
-    public void setGnpOld(double gnpOld) {
+    public void setGnpOld(Double gnpOld) {
         this.gnpOld = gnpOld;
     }
 

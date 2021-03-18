@@ -12,7 +12,7 @@ public class City {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @NotNull
     @Column(name = "id")
-    private int id;
+    private Integer id;
 
     @Column(name = "name")
     @NotNull
@@ -29,23 +29,23 @@ public class City {
 
     @Column(name = "population")
     @NotNull
-    private int population;
+    private Integer population;
 
     public City() {
     }
 
-    public City(String name, Country countryCode, String district, int population) {
+    public City(String name, Country countryCode, String district, Integer population) {
         this.name = name;
         this.countryCode = countryCode;
         this.district = district;
         this.population = population;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -73,11 +73,11 @@ public class City {
         this.district = districtText;
     }
 
-    public int getPopulation() {
+    public Integer getPopulation() {
         return population;
     }
 
-    public void setPopulation(int population) {
+    public void setPopulation(Integer population) {
         this.population = population;
     }
 }
